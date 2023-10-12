@@ -24,5 +24,5 @@ public class Departement implements Serializable {
     @OneToMany(mappedBy = "departement")
     @JsonIgnore
     private List<Etudiant> etudiants;
-
+// test test Devops
 }
