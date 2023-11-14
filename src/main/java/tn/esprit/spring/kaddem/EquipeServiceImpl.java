@@ -1,8 +1,7 @@
-package tn.esprit.spring.khaddem.services;
+package tn.esprit.spring.kaddem;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.khaddem.entities.Contrat;
 import tn.esprit.spring.khaddem.entities.Equipe;

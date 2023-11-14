@@ -2,9 +2,8 @@ package tn.esprit.spring.khaddem.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.spring.khaddem.entities.Contrat;
 import tn.esprit.spring.khaddem.entities.Departement;
-import tn.esprit.spring.khaddem.services.IDepartementService;
+import tn.esprit.spring.kaddem.IDepartementService;
 
 import java.util.List;
 

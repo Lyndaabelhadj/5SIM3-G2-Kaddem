@@ -1,8 +1,7 @@
-package tn.esprit.spring.khaddem.services;
+package tn.esprit.spring.kaddem;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.khaddem.entities.*;
 import tn.esprit.spring.khaddem.repositories.ContratRepository;
@@ -14,9 +13,10 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+
 @Slf4j
 @AllArgsConstructor
+@Service
 public class EtudiantServiceImpl implements IEtudiantService{
 
     EtudiantRepository etudiantRepository;
