@@ -13,7 +13,6 @@ import java.util.Optional;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.spring.khaddem.entities.Universite;
-import tn.esprit.spring.khaddem.entities.Departement;
 import tn.esprit.spring.khaddem.repositories.UniversiteRepository;
 import tn.esprit.spring.khaddem.repositories.DepartementRepository;
 import tn.esprit.spring.khaddem.services.UniversiteServiceImpl;

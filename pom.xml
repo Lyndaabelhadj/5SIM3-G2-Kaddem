@@ -11,7 +11,7 @@
     <groupId>tn.esprit.spring</groupId>
     <artifactId>khaddem</artifactId>
     <version>4.0</version>
-    <name>khaddem</name>s
+    <name>khaddem</name>
     <description>khaddem</description>
     <properties>
         <java.version>8</java.version>
@@ -32,7 +32,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.18.30</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -64,5 +65,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>
