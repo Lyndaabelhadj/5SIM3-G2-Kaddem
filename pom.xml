@@ -16,6 +16,7 @@
     <description>khaddem</description>
     <properties>
         <java.version>8</java.version>
+        <sonar.login>squ_e65b95da9b82a1bf6f089591d064f3636e46caa5</sonar.login>
     </properties>
     <dependencies>
         <dependency>
