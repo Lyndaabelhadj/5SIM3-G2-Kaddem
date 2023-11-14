@@ -5,10 +5,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tn.esprit.spring.kaddem.ContratServiceImpl;
 import tn.esprit.spring.khaddem.entities.Contrat;
 import tn.esprit.spring.khaddem.repositories.ContratRepository;
 import tn.esprit.spring.khaddem.repositories.EtudiantRepository;
-import tn.esprit.spring.khaddem.services.ContratServiceImpl;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,7 +21,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class ContratServiceImplTest {
+class ContratServiceImpTest {
 
     @Mock
     private ContratRepository contratRepository;
