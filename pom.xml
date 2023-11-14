@@ -11,7 +11,7 @@
     <groupId>tn.esprit.spring</groupId>
     <artifactId>khaddem</artifactId>
     <version>4.0</version>
-    <name>khaddem</name>
+    <name>khaddem</name>s
     <description>khaddem</description>
     <properties>
         <java.version>8</java.version>
@@ -32,8 +32,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
-            <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -48,15 +47,6 @@
 
 
     </dependencies>
-
-    <!-- Deploy to Nexus -->
-    <distributionManagement>
-        <repository>
-            <id>deploymentRepo</id>
-            <name>Nexus Repository</name>
-            <url>http://localhost:8081/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
 
     <build>
         <plugins>
@@ -74,6 +64,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>
