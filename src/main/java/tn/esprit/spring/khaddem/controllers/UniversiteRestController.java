@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.khaddem.entities.Universite;
-import tn.esprit.spring.khaddem.services.IUniversiteService;
+import tn.esprit.spring.kaddem.IUniversiteService;
 import java.util.List;
 
 @Tag(name = "Gestion des universités")

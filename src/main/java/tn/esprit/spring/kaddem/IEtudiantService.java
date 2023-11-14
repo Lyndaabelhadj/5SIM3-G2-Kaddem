@@ -1,4 +1,4 @@
-package tn.esprit.spring.khaddem.services;
+package tn.esprit.spring.kaddem;
 
 import org.springframework.data.repository.query.Param;
 import tn.esprit.spring.khaddem.entities.Etudiant;
