@@ -22,10 +22,10 @@ pipeline {
                sh "mvn compile"
            }
        }
-       stage('testin maven') {
+
+       stage("Mockito") {
            steps {
-                sh 'mvn -B -DskipTests clean package'
-               echo 'mvn -version'
+                sh 'mvn test'
            }
        }
        stage('Quality test SONARQUBE') {
