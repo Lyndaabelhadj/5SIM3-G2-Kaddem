@@ -8,9 +8,10 @@
         <version>2.7.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>tn.esprit.spring</groupId>
     <artifactId>khaddem</artifactId>
-    <version>4.0</version>
+    <version>1.0-SNAPSHOT</version>
     <name>khaddem</name>
     <description>khaddem</description>
     <properties>
@@ -20,6 +21,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>org.jacoco.agent</artifactId>
+            <version>0.8.7</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,6 +42,7 @@
             <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -48,7 +56,13 @@
 
 
     </dependencies>
-
+    <distributionManagement>
+        <repository>
+            <id>deploymentRepo</id>
+            <name>Nexus Repository</name>
+            <url>http://192.168.50.12:8081/repository/maven-snapshots/</url>
+        </repository>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>
