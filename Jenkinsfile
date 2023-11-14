@@ -1,13 +1,7 @@
 pipeline {
-    agent {label "vagrant-agent"}
+    agent any
 
-    environment {
-        DOCKER_REGISTRY = '192.168.56.3:8085'
-        DOCKER_IMAGE_NAME = 'image-kaddem-project-mehdi'
-        CONTAINER_NAME= 'container-kaddem-project-mehdi'
-        DOCKER_IMAGE_TAG = 'latest'
-        PORT = '9090'
-    }
+
 
     stages {
 
@@ -30,19 +24,15 @@ pipeline {
                    sh "mvn compile"
                }
            }
-        stage('Build Maven Project') {
-            steps {
-                sh 'mvn clean package -DskipTests'
-            }
-        }
+    
+       stage('Quality test SONARQUBE') {
+                   steps {
+                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
+                       echo 'mvn -Sonarqube Analysis'
+                   }
+               }
 
-        stage('Sonar tests'){
-            steps{
-                sh "mvn sonar:sonar -Dsonar.login=squ_ad59a0e58c7f21b4f6079372f380d96526b86c8d"
-            }
-        }
-
-        stage('Build Docker image') {
+       /* stage('Build Docker image') {
             steps {
                 sh "sudo docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
             }
@@ -62,22 +52,9 @@ pipeline {
                     sh "sudo docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
                 }
             }
-        }
+        }*/
 
 
     }
-    post {
-        success {
-            emailext body: "The pipeline has completed successfully",
-                attachLog: true,
-                subject: "Jenkins pipeline completed successfully",
-                to: "touati.wissal@esprit.tn"
-        }Jenkinsfile
-        failure {
-            emailext body: "The pipeline has failed",
-                attachLog: true,
-                subject: "Jenkins pipeline failed",
-                to: "touati.wissal@esprit.tn"
-        }
-    }
+
 }
