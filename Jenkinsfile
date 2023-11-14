@@ -3,7 +3,7 @@ pipeline {
 
  stages {
 
-       stage('Hello Linda') {
+       stage('Hello Dali') {
            steps {
                echo 'Hello World'
            }
@@ -30,7 +30,7 @@ pipeline {
        }
        stage('Quality test SONARQUBE') {
            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+                sh 'mvn sonar:sonar -Dsonar.login=Admin -Dsonar.password=Charfeddine55!'
                echo 'mvn -Sonarqube Analysis'
            }
        }
