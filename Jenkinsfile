@@ -71,13 +71,13 @@ pipeline {
             emailext body: "The pipeline has completed successfully",
                 attachLog: true,
                 subject: "Jenkins pipeline completed successfully",
-                to: "dimassimehdi58@gmail.com"
+                to: "touati.wissal@esprit.tn"
         }Jenkinsfile
         failure {
             emailext body: "The pipeline has failed",
                 attachLog: true,
                 subject: "Jenkins pipeline failed",
-                to: "dimassimehdi58@gmail.com"
+                to: "touati.wissal@esprit.tn"
         }
     }
 }
