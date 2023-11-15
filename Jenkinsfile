@@ -25,15 +25,13 @@ pipeline {
         stage('testing spring') {
             steps {
                sh "docker run -p 3308:3306 --name testing_container mysql:5.7"
-                sh 'mvn test -Dspring.profiles.active=testing'
+               sh 'mvn test -Dspring.profiles.active=testing'
             }
         }
         stage('Code Coverage') {
             steps {
-                dir("DevOps_Project") {
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                        sh "mvn jacoco:report"
-                    }
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh "mvn jacoco:report"
                 }
             }
         }
@@ -91,10 +89,10 @@ pipeline {
                 -Jenkins Team - ''
             ', cc: '
             ', from: '
-            lynda.belhadj @esprit.tn ', replyTo: '
+            lynda.belhadj@esprit.tn ', replyTo: '
             ', subject: '
             Build Finished - Failure ', to: '
-            lynda.belhadj @esprit.tn '
+            lynda.belhadj@esprit.tn '
         }
 
         always {
