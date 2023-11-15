@@ -30,7 +30,7 @@ pipeline {
        }
        stage('Quality test SONARQUBE') {
            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=adminadmin'
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
                echo 'mvn -Sonarqube Analysis'
            }
        }
