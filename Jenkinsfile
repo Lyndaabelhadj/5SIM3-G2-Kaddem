@@ -64,7 +64,7 @@ pipeline {
         stage('Deploy image') {
                     steps {
                         echo "Deploying the image..."
-                        sh 'docker login -u wissal99 -p overlord99'
+                        sh 'docker login -u wissal999 -p overlord99'
                         sh 'docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
                     }
                 }
