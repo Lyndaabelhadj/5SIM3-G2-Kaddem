@@ -1,6 +1,14 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_REGISTRY = '192.180.12.107:8082'
+        DOCKER_IMAGE_NAME = 'kaddem-project-wissal'
+        CONTAINER_NAME= 'devops-kaddem-project'
+        DOCKER_IMAGE_TAG = 'latest'
+        PORT="9095"
+    }
+
     stages {
         stage('GIT') {
             steps {
@@ -44,7 +52,7 @@ pipeline {
             }
         }
 
-        /* Uncomment and modify the following stages based on your needs
+
         stage('Build Docker image') {
             steps {
                 sh "sudo docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
@@ -57,7 +65,7 @@ pipeline {
             }
         }
 
-        stage('Push Docker image to Nexus') {
+        /*stage('Push Docker image to Nexus') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'nexus-credential-id', passwordVariable: 'password', usernameVariable: 'username')]) {
                     sh "sudo docker login -u ${username} -p ${password} ${DOCKER_REGISTRY}"

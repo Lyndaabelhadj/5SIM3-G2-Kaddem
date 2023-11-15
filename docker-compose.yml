@@ -11,7 +11,7 @@ services:
 
   spring_app:
     image: "fff:latest"
-    container_name: container-kaddem-project-mehdi
+    container_name: container-kaddem-project-wissal
     restart: "on-failure"
     ports:
       - "9090:9090"
