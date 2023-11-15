@@ -32,20 +32,21 @@ pipeline {
                 echo 'mvn -Sonarqube Analysis'
             }
         }
-        stage('Deploy artifact with nexus') {
-            steps {
-                sh 'mvn deploy -DskipTests'
-            }
-        }
         stage('Maven Package') {
             steps {
                 sh 'mvn package -DskipTests'
             }
         }
+        stage('Deploy artifact with nexus') {
+            steps {
+                sh 'mvn deploy -DskipTests'
+            }
+        }
+
         stage("Building image") {
             steps {
                 script {
-                    def dockerImage = docker.build("191jft4255/khaddem:latest")
+                    def dockerImage = docker.build("dalicharfeddine/khaddem:latest")
                 }
             }
         }
