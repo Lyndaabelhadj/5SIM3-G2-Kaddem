@@ -62,8 +62,10 @@ pipeline {
             }
         }
         stage("Removing testing container") {
-            sh "docker stop testing_container"
-            sh "docker rm testing_container"
+            steps {
+                 sh "docker stop testing_container"
+                 sh "docker rm testing_container"
+            }
         }
     }
     post {
