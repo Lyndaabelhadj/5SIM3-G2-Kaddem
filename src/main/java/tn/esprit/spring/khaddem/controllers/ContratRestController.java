@@ -34,8 +34,7 @@ public class ContratRestController {
     @PostMapping("/add-contrat")
     @ResponseBody
     public Contrat addContrat(@RequestBody Contrat c) {
-        Contrat contrat = contratService.addContrat(c);
-        return contrat;
+        return contratService.addContrat(c);
     }
 
     // http://localhost:8089/Kaddem/contrat/update-contrat

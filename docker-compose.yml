@@ -10,7 +10,7 @@ services:
       - '/home/mysql-data:/var/lib/mysql'
 
   spring_app:
-    image: "kaddem-mehdi-dimassi:latest"
+    image: "fff:latest"
     container_name: container-kaddem-project-mehdi
     restart: "on-failure"
     ports:
