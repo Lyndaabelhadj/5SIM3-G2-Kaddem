@@ -15,9 +15,8 @@
     <description>khaddem</description>
     <properties>
         <java.version>8</java.version>
-        <sonar.token>squ_3a5f14d8b41b1d4e338bd5c6272d98a89098f09a</sonar.token>
         <sonar.login>sonar-admin</sonar.login>
-        <sonar.password>overlord99</sonar.password>
+
 
     </properties>
     <dependencies>
