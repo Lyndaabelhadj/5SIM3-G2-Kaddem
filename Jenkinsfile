@@ -40,11 +40,7 @@ pipeline {
             }
         }
 
-        stage('Maven Package') {
-            steps {
-                sh 'mvn package -DskipTests'
-            }
-        }
+     
 
         stage('Deploy artifact with nexus') {
             steps {
