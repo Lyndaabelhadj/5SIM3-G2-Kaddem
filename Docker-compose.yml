@@ -1,16 +1,33 @@
-version: '3'
+version: '3.8'
+
+networks:
+  devops:
+    driver: bridge
+
+volumes:
+  db:
+
 services:
-  mysql:
-    image: mysql:latest
+  db:
+    container_name: db
     environment:
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_DATABASE:
+      - MYSQL_ROOT_PASSWORD=null
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    image: mysql:5.7
+    networks:
+      - devops
     ports:
       - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
 
-  spring-app:
-    build: "https://github.com/WassimB12/5SAE6_Wamya_SkyStation"
-    ports:
-      - "8080:8080"
+  backend:
+    restart: on-failure
+    container_name: backend
     depends_on:
-      - mysql
+      - db
+    image: lindabelhadj/kaddem:1.0
+    networks:
+      - devops
+    ports:
+      - "8089:8089"

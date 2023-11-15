@@ -39,5 +39,10 @@ pipeline {
                         sh 'mvn deploy -DskipTests'
                    }
                }
+       stage('Docker build') {
+                          steps {
+                               sh 'docker build -t kaddem.jar .'
+                          }
+                      }
    }
 }
