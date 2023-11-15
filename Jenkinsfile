@@ -3,7 +3,7 @@ pipeline {
 
  stages {
 
-       stage('Hello Linda') {
+       stage('Hello Houssem') {
            steps {
                echo 'Hello World'
            }
@@ -37,6 +37,25 @@ pipeline {
        stage('Deploy artifact with nexus') {
                    steps {
                         sh 'mvn deploy -DskipTests'
+                   }
+               }
+               stage('Docker Build image') {
+                   steps {
+                       sh "mvn package -DskipTests"
+                       sh 'docker build -t houssem9017/khaddem:1.0.1 .'
+                   }
+               }
+
+               stage('Docker PUSH image') {
+                   steps {
+                       sh 'docker login -u houssem9017 -p F@!yz~x==GJ-:3?'
+                       sh 'docker push houssem9017/khaddem:1.0.1'
+                   }
+               }
+               stage("Removing testing container") {
+                   steps {
+                        sh "docker stop testing_container"
+                        sh "docker rm testing_container"
                    }
                }
 
