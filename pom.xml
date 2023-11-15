@@ -10,11 +10,18 @@
     </parent>
     <groupId>tn.esprit.spring</groupId>
     <artifactId>khaddem</artifactId>
-    <version>4.0</version>
+    <version>4.0-SNAPSHOT</version>
     <name>khaddem</name>
     <description>khaddem</description>
     <properties>
         <java.version>8</java.version>
+        <!-- JaCoCo Properties -->
+        <jacoco.version>0.8.11</jacoco.version>
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+        <project.reporting.outputDirectory>${project.basedir}/../target</project.reporting.outputDirectory>
+        <sonar.language>java</sonar.language>
     </properties>
     <dependencies>
         <dependency>
@@ -44,7 +51,11 @@
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.6.9</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>${jacoco.version}</version>
+        </dependency>
     </dependencies>
 
     <!-- Deploy to Nexus -->
@@ -52,11 +63,12 @@
         <repository>
             <id>deploymentRepo</id>
             <name>Nexus Repository</name>
-            <url>http://localhost:8081/repository/maven-releases/</url>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
         </repository>
     </distributionManagement>
 
     <build>
+        <finalName>kaddem</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -69,6 +81,31 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>post-test</id>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Sets the path to the file which contains the execution data. -->
+                            <dataFile>${sonar.jacoco.reportPath}</dataFile>
+                            <!-- Sets the output directory for the code coverage report. -->
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-coverage</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
