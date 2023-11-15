@@ -19,7 +19,7 @@ pipeline {
                    sh "mvn clean"
                }
            }
-           stage('MVN Complie') {
+           stage('MVN Compile') {
                steps {
                    echo 'Validating...'
                    sh "mvn validate"
@@ -59,5 +59,21 @@ pipeline {
 
 
     }
+
+        post {
+            success {
+                emailext body: "The pipeline has completed successfully",
+                    attachLog: true,
+                    subject: "Jenkins pipeline completed successfully",
+                    to: "touati.wissal@esprit.tn"
+            }
+            failure {
+                emailext body: "The pipeline has failed",
+                    attachLog: true,
+                    subject: "Jenkins pipeline failed",
+                    to: "touati.wissal@esprit.tn"
+            }
+        }
+
 
 }
