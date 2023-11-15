@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY = '192.168.33.10:8082'
+        DOCKER_REGISTRY = 'WissalTOUATI'
         DOCKER_IMAGE_NAME = 'kaddem-project-wissal'
         CONTAINER_NAME= 'devops-kaddem-project'
         DOCKER_IMAGE_TAG = 'latest'
@@ -60,6 +60,14 @@ pipeline {
         }
 
 
+
+        stage('Deploy image') {
+                    steps {
+                        echo "Deploying the image..."
+                        sh 'docker login -u wissal99 -p overlord99'
+                        sh 'docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
+                    }
+                }
 
        /* stage('Maven deploy') {
             steps {
