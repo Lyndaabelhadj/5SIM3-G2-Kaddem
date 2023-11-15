@@ -1,5 +1,5 @@
 environment {
-        DOCKER_REGISTRY = 'Dalicharf'
+        DOCKER_REGISTRY = '192.168.33.10:8082'
         DOCKER_IMAGE_NAME = 'kaddem-project-Dali'
         CONTAINER_NAME= 'devops-kaddem-project'
         DOCKER_IMAGE_TAG = 'latest'
