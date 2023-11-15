@@ -1,6 +1,6 @@
 environment {
         DOCKER_REGISTRY = 'dali'
-        DOCKER_IMAGE_NAME = 'kaddem-project-Dali'
+        DOCKER_IMAGE_NAME = 'kaddem-project-dali'
         CONTAINER_NAME= 'devops-kaddem-project'
         DOCKER_IMAGE_TAG = 'latest'
         PORT="9095"
@@ -52,7 +52,7 @@ pipeline {
 
         stage('Build Docker image') {
             steps {
-                sh "docker build -t ${DOCKER_IMAGE_NAME} ${DOCKER_IMAGE_TAG} ."
+                sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
             }
         }
         stage('Deploy image') {
