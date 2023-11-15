@@ -39,15 +39,5 @@ pipeline {
                         sh 'mvn deploy -DskipTests'
                    }
                }
-       stage('Deploy artifact with nexus') {
-                          steps {
-                               sh 'mvn deploy -DskipTests'
-                          }
-                      }
-       stage('Deploy artifact with nexus') {
-                           steps {
-                                sh 'mvn deploy -DskipTests'
-                           }
-                       }
    }
 }
