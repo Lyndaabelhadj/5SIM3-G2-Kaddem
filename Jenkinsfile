@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Quality test SONARQUBE') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.login=Admin -Dsonar.password=Charfeddine55!'
+                sh 'mvn sonar:sonar -Dsonar.login=Dali -Dsonar.password=191JFT4255'
                 echo 'mvn -Sonarqube Analysis'
             }
         }
@@ -40,7 +40,7 @@ pipeline {
         stage("Building image") {
             steps {
                 script {
-                    def dockerImage = docker.build("inesmsallem/achat:latest")
+                    def dockerImage = docker.build("dalicharfeddine/khaddem:latest")
                 }
             }
         }
