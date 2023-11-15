@@ -27,7 +27,7 @@ class IEtudiantServiceTest {
 
 
     @Test
-    public void testAddEtudiant() {
+     void testAddEtudiant() {
         // Créez un étudiant fictif pour le test
         Etudiant etudiant = new Etudiant();
         etudiant.setNomE("Touati");
@@ -41,7 +41,7 @@ class IEtudiantServiceTest {
     }
 
     @Test
-    public void testRetrieveAllEtudiants() {
+     void testRetrieveAllEtudiants() {
         // Créez une liste fictive d'étudiants pour le test
         List<Etudiant> etudiantsFictifs = new ArrayList<>();
         Etudiant etudiant = new Etudiant();
@@ -65,7 +65,7 @@ class IEtudiantServiceTest {
 
 
     @Test
-    public void testUpdateEtudiant() {
+     void testUpdateEtudiant() {
         // Créez un étudiant fictif pour le test
         Etudiant etudiant = new Etudiant();
         etudiant.setIdEtudiant(1);
@@ -82,14 +82,14 @@ class IEtudiantServiceTest {
         Assertions.assertEquals(etudiant, result);
     }
     @Test
-    public void testRemoveEtudiant() {
+    void testRemoveEtudiant() {
         Integer idEtudiant = 1;
         etudiantService.removeEtudiant(idEtudiant);
 
         Mockito.verify(etudiantRepository, Mockito.times(1)).deleteById(idEtudiant);
     }
     @Test
-    public void testRetrieveEtudiant() {
+     void testRetrieveEtudiant() {
         // Créez un étudiant fictif pour le test
         Etudiant etudiant = new Etudiant();
         etudiant.setIdEtudiant(1);

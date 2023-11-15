@@ -5,18 +5,21 @@ pipeline {
 
     stages {
 
-        stage('Hello Wissal') {
-               steps {
-                   echo 'Hello World'
+               stage('GIT'){
+                   steps{
+                   echo "Getting Project from Git";
+                   git branch: 'WissalTOUATI-5SIM3-G2', credentialsId: '4201e22a-1f70-4aa8-bb76-7b8ecfa0e8d6',  url: 'https://github.com/Lyndaabelhadj/5SIM3-G2-Kaddem.git'
+                   }
                }
-           }
-           stage('Clean') {
+
+
+           stage('MVN Clean') {
                steps {
                    echo 'Cleaning...'
                    sh "mvn clean"
                }
            }
-           stage('Build') {
+           stage('MVN Complie') {
                steps {
                    echo 'Validating...'
                    sh "mvn validate"
@@ -24,7 +27,7 @@ pipeline {
                    sh "mvn compile"
                }
            }
-    
+
        stage('Quality test SONARQUBE') {
                    steps {
                         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
