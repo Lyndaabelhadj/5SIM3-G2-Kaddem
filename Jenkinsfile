@@ -37,6 +37,11 @@ pipeline {
                 sh 'mvn deploy -DskipTests'
             }
         }
+        stage('Maven Package') {
+            steps {
+                sh 'mvn package -DskipTests'
+            }
+        }
         stage("Building image") {
             steps {
                 script {
