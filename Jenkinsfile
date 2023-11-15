@@ -52,7 +52,7 @@ pipeline {
 
         stage('Build Docker image') {
             steps {
-                sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
+                sh "docker build -t ${DOCKER_IMAGE_NAME} ${DOCKER_IMAGE_TAG} ."
             }
         }
         stage('Deploy image') {
