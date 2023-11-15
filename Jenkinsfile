@@ -41,6 +41,7 @@ pipeline {
                }
        stage('Docker build') {
                           steps {
+                               sh 'mvn package'
                                sh 'docker build -t kaddem.jar .'
                           }
                       }
