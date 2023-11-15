@@ -40,7 +40,11 @@ pipeline {
             }
         }
 
-     
+       /* stage('Maven Package') {
+            steps {
+                sh 'mvn package -DskipTests'
+            }
+        }*/
 
         stage('Deploy artifact with nexus') {
             steps {
@@ -55,11 +59,11 @@ pipeline {
             }
         }
 
-        stage('Maven deploy') {
+       /* stage('Maven deploy') {
             steps {
                 sh "mvn deploy -DskipTests"
             }
-        }
+        }*/
 
         /*stage('Push Docker image to Nexus') {
             steps {
