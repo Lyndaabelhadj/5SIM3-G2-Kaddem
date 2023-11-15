@@ -11,7 +11,6 @@ services:
   db:
     container_name: db
     environment:
-      - MYSQL_ROOT_PASSWORD=null
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     image: mysql:5.7
     networks:
