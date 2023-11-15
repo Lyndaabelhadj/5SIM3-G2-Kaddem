@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY = 'WissalTOUATI'
+        DOCKER_REGISTRY = 'wissal'
         DOCKER_IMAGE_NAME = 'kaddem-project-wissal'
         CONTAINER_NAME= 'devops-kaddem-project'
         DOCKER_IMAGE_TAG = 'latest'
