@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY = 'wissal'
+        DOCKER_REGISTRY = '192.168.33.10:8082'
         DOCKER_IMAGE_NAME = 'kaddem-project-wissal'
         CONTAINER_NAME= 'devops-kaddem-project'
         DOCKER_IMAGE_TAG = 'latest'
@@ -53,7 +53,7 @@ pipeline {
         }
 
 
-        stage('Build Docker image') {
+      stage('Build Docker image') {
             steps {
                 sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
             }
@@ -68,7 +68,6 @@ pipeline {
                         sh 'docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
                     }
                 }
-
        /* stage('Maven deploy') {
             steps {
                 sh "mvn deploy -DskipTests"
