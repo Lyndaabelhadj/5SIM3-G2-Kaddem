@@ -35,6 +35,13 @@ pipeline {
                    }
                }
 
+
+              stage('Deploy artifact with nexus') {
+                          steps {
+                               sh 'mvn deploy -DskipTests'
+                          }
+                      }
+
        /* stage('Build Docker image') {
             steps {
                 sh "sudo docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
