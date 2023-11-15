@@ -10,6 +10,3 @@ RUN apk add --no-cache curl \
 EXPOSE 8089
 
 ENTRYPOINT ["java", "-jar", "Project.jar"]
-
-
-C:\Users\Ouissal\Desktop\5SIM3-G2-Kaddem\target\khaddem-4.0.jar
