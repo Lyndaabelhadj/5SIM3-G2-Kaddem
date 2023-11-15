@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY = '192.180.12.107:8082'
+        DOCKER_REGISTRY = '192.168.33.10:8082'
         DOCKER_IMAGE_NAME = 'kaddem-project-wissal'
         CONTAINER_NAME= 'devops-kaddem-project'
         DOCKER_IMAGE_TAG = 'latest'
