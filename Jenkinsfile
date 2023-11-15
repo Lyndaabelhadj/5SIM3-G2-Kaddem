@@ -1,3 +1,10 @@
+environment {
+        DOCKER_REGISTRY = 'Dalicharf'
+        DOCKER_IMAGE_NAME = 'kaddem-project-Dali'
+        CONTAINER_NAME= 'devops-kaddem-project'
+        DOCKER_IMAGE_TAG = 'latest'
+        PORT="9095"
+    }
 pipeline {
     agent any
 
@@ -43,11 +50,9 @@ pipeline {
             }
         }
 
-        stage("Building image") {
+        stage('Build Docker image') {
             steps {
-                script {
-                    def dockerImage = docker.build("dalicharfeddine/khaddem:latest")
-                }
+                sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
             }
         }
         stage('Deploy image') {
