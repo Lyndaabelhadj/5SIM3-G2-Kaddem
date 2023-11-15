@@ -40,15 +40,15 @@ pipeline {
         stage("Building image") {
             steps {
                 script {
-                    def dockerImage = docker.build("dalicharfeddine/khaddem:latest")
+                    def dockerImage = docker.build("191jft4255/khaddem:latest")
                 }
             }
         }
         stage('Deploy image') {
             steps {
                 echo "Deploying the image..."
-                sh 'docker login -u inesmsallem -p pewpew58'
-                sh 'docker push inesmsallem/achat:latest'
+                sh 'docker login -u 191jft4255 -p 1191JFT4255'
+                sh 'docker push 191jft4255/khaddem:latest'
             }
         }
         stage('Run Docker Compose') {
