@@ -47,7 +47,7 @@ pipeline {
         stage('Deploy image') {
             steps {
                 echo "Deploying the image..."
-                sh 'docker login -u 191jft4255 -p 1191JFT4255'
+                sh 'docker login -u 191jft4255 -p 191JFT4255'
                 sh 'docker push 191jft4255/khaddem:latest'
             }
         }
