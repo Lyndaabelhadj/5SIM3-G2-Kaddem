@@ -68,31 +68,29 @@ pipeline {
     }
     post {
         success {
-            mail bcc: '', body: ''
+            mail bcc: '',
+            body: '''
             'Dear Lynda ,
             we are happy to inform you that your pipeline build was successful.
             Great work!
-                -Jenkins Team - ''
-            ', cc: '
-            ', from: '
-            lynda.belhadj@esprit.tn ', replyTo: '
-            ', subject: '
-            Build Finished - Success ', to: '
-            lynda.belhadj@esprit.tn '
+                -Jenkins Team - ''',
+            cc: '',
+            from: 'lynda.belhadj@esprit.tn',
+            replyTo: '',
+            subject: 'Build Finished - Success',
+            to: 'lynda.belhadj@esprit.tn'
         }
 
         failure {
-            mail bcc: '', body: ''
+            mail bcc: '',
+            body: '''
             'Dear Lynda,
             we are sorry to inform you that your pipeline build failed.
             Keep working!
-                -Jenkins Team - ''
-            ', cc: '
-            ', from: '
-            lynda.belhadj@esprit.tn ', replyTo: '
-            ', subject: '
-            Build Finished - Failure ', to: '
-            lynda.belhadj@esprit.tn '
+                -Jenkins Team - ''',
+            cc: '',
+            from: 'lynda.belhadj@esprit.tn', replyTo: '',
+            subject: 'Build Finished - Failure', to: 'lynda.belhadj@esprit.tn'
         }
 
         always {
