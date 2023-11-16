@@ -1,6 +1,12 @@
 pipeline {
     agent any
-
+ environment {
+        DOCKER_REGISTRY = 'lindabelhadj'
+        DOCKER_IMAGE_NAME = 'kaddem-project-linda'
+        CONTAINER_NAME= 'devops-kaddem-project'
+        DOCKER_IMAGE_TAG = 'latest'
+        PORT="9095"
+    }
     stages {
 
         stage('Hello Linda') {
@@ -24,7 +30,7 @@ pipeline {
         }
         stage('testing spring') {
             steps {
-               sh "docker run -d -p 3308:3306 --name testing_container -e MYSQL_ROOT_PASSWORD=root mysql:5.7"
+              // sh "docker run -d -p 3308:3306 --name testing_container -e MYSQL_ROOT_PASSWORD=root mysql:5.7"
                sh 'mvn test -Dspring.profiles.active=testing'
             }
         }
@@ -48,17 +54,29 @@ pipeline {
 
         stage('Docker Build image') {
             steps {
-                sh "mvn package -DskipTests"
-                sh 'docker build -t lindabelhadj/kaddem:1-0 .'
+              //  sh "mvn package -DskipTests"
+              //  sh 'docker build -t lindabelhadj/kaddem:1-0 .'
+               sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
             }
         }
 
         stage('Docker PUSH image') {
             steps {
-                sh 'docker login -u lindabelhadj -p dock@hello123!!Lin'
-                sh 'docker push lindabelhadj/kaddem:1-0'
+                //sh 'docker login -u lindabelhadj -p dock@hello123!!Lin'
+                //sh 'docker push lindabelhadj/kaddem:1-0'
+                echo "Deploying the image..."
+                sh 'docker login -u lindabelhadj -p dock@hello123!!Lin docker.io'
+                sh 'docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
             }
         }
+
+        stage("Docker compose") {
+              steps {
+
+                sh "docker compose up -d"
+            }
+        }
+
         stage("Removing testing container") {
             steps {
                  sh "docker stop testing_container"
