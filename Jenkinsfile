@@ -30,8 +30,7 @@ pipeline {
        }
                stage('Docker Build image') {
                    steps {
-                       sh "mvn package -DskipTests"
-                       sh 'docker build -t houssem9017/khaddem:1.0.1 .'
+                       sh 'docker build -t khaddem1.jar .'
                    }
                }
 
