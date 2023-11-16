@@ -33,7 +33,13 @@ pipeline {
             }
         }
 
-
+     stage('Code Coverage') {
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh "mvn jacoco:report"
+                }
+            }
+        }
         stage('Quality test SONARQUBE') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=sonar -Dsonar.password=overlord'
