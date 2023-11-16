@@ -33,6 +33,12 @@ pipeline {
             }
         }
 
+    stage("Mockito") {
+               steps {
+                  // sh 'mvn test'
+                  echo 'mvn test'
+               }
+           }
 
         stage('Quality test SONARQUBE') {
             steps {
