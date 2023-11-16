@@ -80,7 +80,7 @@ pipeline {
         stage('Run Docker Compose') {
             steps {
                 echo "Running docker compose..."
-                sh 'docker-compose up -d'
+                sh 'sudo /usr/libexec/docker/cli-plugins/docker-compose up -d'
             }
         }
     }
