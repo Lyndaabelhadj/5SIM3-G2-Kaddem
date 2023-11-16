@@ -22,17 +22,7 @@ pipeline {
                sh "mvn compile"
            }
        }
-       stage('testing maven') {
-           steps {
-                sh 'mvn test -Dspring.profiles.active=test'
-           }
-       }
-       stage('Quality test SONARQUBE') {
-           steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
-               echo 'mvn -Sonarqube Analysis'
-           }
-       }
+
        stage('Deploy artifact with nexus') {
                    steps {
                         sh 'mvn deploy -DskipTests'
@@ -54,5 +44,16 @@ pipeline {
                                       sh 'docker compose up -d'
                                  }
                              }
+       stage('testing maven') {
+                  steps {
+                       sh 'mvn test -Dspring.profiles.active=test'
+                  }
+              }
+              stage('Quality test SONARQUBE') {
+                  steps {
+                       sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
+                      echo 'mvn -Sonarqube Analysis'
+                  }
+              }
    }
 }
