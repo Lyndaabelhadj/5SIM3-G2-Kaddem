@@ -24,8 +24,7 @@ pipeline {
        }
        stage('testin maven') {
            steps {
-                sh 'mvn -B -DskipTests clean package'
-               echo 'mvn -version'
+                sh 'mvn test -Dspring.profiles.active=test'
            }
        }
        stage('Quality test SONARQUBE') {
