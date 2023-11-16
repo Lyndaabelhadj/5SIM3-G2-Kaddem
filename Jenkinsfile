@@ -44,5 +44,12 @@ pipeline {
                                sh 'docker build -t kaddem.jar .'
                           }
                       }
+       stage('Image deploy') {
+                                 steps {
+                                      sh 'docker login -u rbenslimaine@gmail.com -p Rayenrayen123'
+                                      sh 'docker tag kaddem.jar rayenbenslimen/kaddem:1.0'
+                                      sh 'docker push rayenbenslimen/kaddem:1.0'
+                                 }
+                             }
    }
 }
