@@ -96,18 +96,27 @@ pipeline {
 
     }
 
-    post {
+  post {
         success {
-            emailext body: "The pipeline has completed successfully",
-                attachLog: true,
-                subject: "Jenkins pipeline completed successfully",
-                to: "ouissaltouaty99@gmail.com"
+            mail bcc: '',
+            body: 'The pipeline has completed successfully',
+            from: 'ouissaltouaty99@gmail.com',
+            subject: 'Jenkins pipeline completed successfully',
+            to: 'ouissaltouaty99@gmail.com'
         }
+
         failure {
-            emailext body: "The pipeline has failed",
-                attachLog: true,
-                subject: "Jenkins pipeline failed",
-                to: "ouissaltouaty99@gmail.com"
+            mail bcc: '',
+            body: 'The pipeline has failed',
+
+            from: 'ouissaltouaty99@gmail.com', replyTo: '',
+            subject: 'Jenkins pipeline failed', to: 'ouissaltouaty99@gmail.com'
+        }
+
+        always {
+            emailext attachLog: true, body: '', subject: 'Build finished', from: 'ouissaltouaty99@gmail.com', to: 'ouissaltouaty99@gmail.com'
+            cleanWs()
         }
     }
+
 }
