@@ -24,7 +24,7 @@ pipeline {
         }
         stage('testing spring') {
             steps {
-               sh "docker run -p 3308:3306 --name testing_container mysql:5.7"
+               sh "docker run -p 3308:3306 --name testing_container -e MYSQL_ROOT_PASSWORD=root mysql:5.7"
                sh 'mvn test -Dspring.profiles.active=testing'
             }
         }
