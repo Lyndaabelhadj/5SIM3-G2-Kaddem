@@ -28,17 +28,6 @@ pipeline {
                echo 'mvn -version'
            }
        }
-       stage('Quality test SONARQUBE') {
-           steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
-               echo 'mvn -Sonarqube Analysis'
-           }
-       }
-       stage('Deploy artifact with nexus') {
-                   steps {
-                        sh 'mvn deploy -DskipTests'
-                   }
-               }
                stage('Docker Build image') {
                    steps {
                        sh "mvn package -DskipTests"
