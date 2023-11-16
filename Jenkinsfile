@@ -33,19 +33,18 @@ pipeline {
                        sh 'docker build -t khaddem.jar .'
                    }
                }
-
-               stage('Docker PUSH image') {
-                   steps {
-                       sh 'docker login -u houssem9017 -p F@!yz~x==GJ-:3?'
-                       sh 'docker push houssem9017/khaddem:1.0.1'
-                   }
-               }
-               stage("Removing testing container") {
-                   steps {
-                        sh "docker stop testing_container"
-                        sh "docker rm testing_container"
-                   }
-               }
+       stage('Image deploy') {
+                                 steps {
+                                      sh 'docker login -u houssem9017 -p F@!yz~x==GJ-:3?'
+                                      sh 'docker tag khaddem.jar houssem9017/khaddem:1.0'
+                                      sh 'docker push houssem9017/kaddem:1.0'
+                                 }
+                             }
+       stage('Docker compose') {
+                                 steps {
+                                      sh 'docker compose up -d'
+                                 }
+                             }
 
    }
 }
