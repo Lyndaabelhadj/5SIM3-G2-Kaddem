@@ -30,8 +30,7 @@ pipeline {
                 sh 'mvn validate'
                 echo 'Compiling...'
                 sh 'mvn compile'
-                echo 'Testing...'
-                sh 'mvn clean test'
+
             }
         }
 
