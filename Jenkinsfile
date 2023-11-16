@@ -46,6 +46,12 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
             }
         }
+        stage('Maven Package') {
+             steps {
+                 sh 'mvn package -DskipTests'
+             }
+        }
+
         stage('Deploy artifact with nexus') {
             steps {
                 sh 'mvn deploy -DskipTests'
