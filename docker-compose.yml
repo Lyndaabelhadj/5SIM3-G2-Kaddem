@@ -15,6 +15,7 @@ services:
       - ./backend_spring_data:/app/data
 
   mysqldb:
+    container_name: mysqldb
     image: arm64v8/mysql:8.0.34
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
