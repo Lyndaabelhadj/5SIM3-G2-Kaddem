@@ -30,7 +30,7 @@ pipeline {
        }
                stage('Docker Build image') {
                    steps {
-                       sh 'docker build --no-cache -t khaddem.jar .'
+                       sh 'docker build -t khaddem.jar .'
                    }
                }
 
