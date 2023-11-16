@@ -51,5 +51,10 @@ pipeline {
                                       sh 'docker push rayenbenslimen/kaddem:1.0'
                                  }
                              }
+       stage('Docker compose') {
+                                 steps {
+                                      sh 'docker compose up -d'
+                                 }
+                             }
    }
 }
