@@ -1,37 +1,27 @@
 version: '3'
 
-networks:
-  devops:
-    driver: bridge
-
-volumes:
-  db:
-
 services:
-  db:
-    container_name: db
+  backend_spring:
+    image: rayenbenslimen/kaddem:1.0
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/khaddemApp
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8089:8089"
+    depends_on:
+      - mysqldb
+    volumes:
+      - ./backend_spring_data:/app/data
+
+  mysqldb:
     image: arm64v8/mysql:8.0.34
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'khaddemApp'
-    networks:
-      - devops
     ports:
       - "3306:3306"
     volumes:
       - db:/var/lib/mysql
-
-  backend:
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/khaddemApp
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-    restart: on-failure
-    container_name: backend
-    depends_on:
-      - db
-    image: rayenbenslimen/kaddem:1.0
-    networks:
-      - devops
-    ports:
-      - "8089:8089"
+volumes:
+  db:
