@@ -38,7 +38,7 @@ pipeline {
                    sh 'mvn test'
                }
            }
-           
+
         stage('Quality test SONARQUBE') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=sonar -Dsonar.password=overlord'
