@@ -72,7 +72,7 @@ pipeline {
 
      stage("Docker compose") {
                      steps {
-                          sh 'docker login -u wissal999 -p overlord99 docker.io'
+                        
                           sh "docker compose up -d"
                            }
                          }
