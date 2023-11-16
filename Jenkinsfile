@@ -106,10 +106,10 @@ pipeline {
             Keep working!
             -Jenkins Team - ''',
             cc: '',
-            from: 'lynda.belhadj@esprit.tn',
+            from: 'mohamedali.charfeddine1@esprit.tn',
             replyTo: '',
             subject: 'Build Finished - Failure',
-            to: 'lynda.belhadj@esprit.tn'
+            to: 'charfdali5@gmail.com'
         }
 
         always {
