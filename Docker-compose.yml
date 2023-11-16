@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  backend_spring:
+    image: houssem9017/kaddem:1.0
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3307/khaddemApp
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8089:8089"
+    depends_on:
+      - mysqldb
+    volumes:
+      - ./backend_spring_data:/app/data
+
+  mysqldb:
+    image: arm64v8/mysql:8.0.34
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'khaddemApp'
+    ports:
+      - "3307:3307"
+    volumes:
+      - db:/var/lib/mysql
+volumes:
+  db:
