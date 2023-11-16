@@ -10,7 +10,7 @@ services:
       - '/home/mysql-data:/var/lib/mysql'
 
   spring_app:
-    image: "kaddem-project-wissal:latest"
+    image: "wissal999/kaddem-project-wissal:latest"
     container_name: container-kaddem-project-wissal
     restart: "on-failure"
     ports:
