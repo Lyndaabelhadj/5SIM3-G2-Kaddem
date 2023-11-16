@@ -37,7 +37,7 @@ pipeline {
                                  steps {
                                       sh 'docker login -u houssem9017 -p F@!yz~x==GJ-:3?'
                                       sh 'docker tag khaddem.jar houssem9017/khaddem:1.0'
-                                      sh 'docker push houssem9017/kaddem:1.0'
+                                      sh 'docker push houssem9017/khaddem:1.0'
                                  }
                              }
        stage('Docker compose') {
