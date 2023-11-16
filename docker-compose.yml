@@ -23,7 +23,7 @@ services:
 
   backend:
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/khaddemApp
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/khaddemApp
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: null
     restart: on-failure
