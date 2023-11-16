@@ -2,6 +2,7 @@ version: '3'
 
 services:
   backend_spring:
+    restart: on-failure
     networks:
       - devops
     image: rayenbenslimen/kaddem:1.0
@@ -9,10 +10,9 @@ services:
       - "8089:8089"
     depends_on:
       - mysqldb
-    volumes:
-      - ./backend_spring_data:/app/data
 
   mysqldb:
+    restart: on-failure
     networks:
       - devops
     container_name: mysqldb

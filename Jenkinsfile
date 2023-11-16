@@ -22,10 +22,9 @@ pipeline {
                sh "mvn compile"
            }
        }
-       stage('testin maven') {
+       stage('testing maven') {
            steps {
-                sh 'mvn -B -DskipTests clean package'
-               echo 'mvn -version'
+                sh 'mvn test -Dspring.profiles.active=test'
            }
        }
        stage('Quality test SONARQUBE') {
@@ -41,13 +40,12 @@ pipeline {
                }
        stage('Docker build') {
                           steps {
-                               sh 'docker build -t kaddem.jar .'
+                               sh 'docker build --no-cache -t rayenbenslimen/kaddem:1.0 .'
                           }
                       }
        stage('Image deploy') {
                                  steps {
                                       sh 'docker login -u rbenslimaine@gmail.com -p Rayenrayen123'
-                                      sh 'docker tag kaddem.jar rayenbenslimen/kaddem:1.0'
                                       sh 'docker push rayenbenslimen/kaddem:1.0'
                                  }
                              }
