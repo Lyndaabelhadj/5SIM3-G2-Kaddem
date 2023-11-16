@@ -7,7 +7,6 @@ pipeline {
         CONTAINER_NAME = 'devops-kaddem-project'
         DOCKER_IMAGE_TAG = 'latest'
         PORT = "9095"
-
     }
 
     stages {
@@ -76,12 +75,50 @@ pipeline {
             }
         }
 
-
         stage('Run Docker Compose') {
             steps {
                 echo "Running docker compose..."
                 sh 'sudo /usr/libexec/docker/cli-plugins/docker-compose up -d'
             }
+        }
+    }
+
+    post {
+        success {
+            mail bcc: '',
+            body: '''
+            Dear Dali ,
+            we are happy to inform you that your pipeline build was successful.
+            Great work!
+            -Jenkins Team - ''',
+            cc: '',
+            from: 'mohamedali.charfeddine1@esprit.tn',
+            replyTo: '',
+            subject: 'Build Finished - Success',
+            to: 'charfdali5@gmail.com'
+        }
+
+        failure {
+            mail bcc: '',
+            body: '''
+            Dear Lynda,
+            we are sorry to inform you that your pipeline build failed.
+            Keep working!
+            -Jenkins Team - ''',
+            cc: '',
+            from: 'lynda.belhadj@esprit.tn',
+            replyTo: '',
+            subject: 'Build Finished - Failure',
+            to: 'lynda.belhadj@esprit.tn'
+        }
+
+        always {
+            emailext attachLog: true,
+            body: '',
+            subject: 'Build finished',
+            from: 'mohamedali.charfeddine1@esprit.tn',
+            to: 'charfdali5@gmail.com'
+            cleanWs()
         }
     }
 }
