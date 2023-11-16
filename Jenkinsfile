@@ -24,12 +24,14 @@ pipeline {
             }
         }
 
-        stage('MVN Compile') {
+        stage('MVN Compile and testing') {
             steps {
                 echo 'Validating...'
                 sh 'mvn validate'
                 echo 'Compiling...'
                 sh 'mvn compile'
+                echo 'Testing...'
+                sh 'mvn clean test'
             }
         }
 
