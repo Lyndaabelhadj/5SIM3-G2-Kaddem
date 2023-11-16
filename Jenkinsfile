@@ -68,6 +68,14 @@ pipeline {
                         sh 'docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
                     }
                 }
+
+
+     stage("Docker compose") {
+                     steps {
+                          sh "docker compose up -d"
+                           }
+                         }
+
        /* stage('Maven deploy') {
             steps {
                 sh "mvn deploy -DskipTests"
