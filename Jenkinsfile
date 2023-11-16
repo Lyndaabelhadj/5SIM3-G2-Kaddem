@@ -51,25 +51,30 @@ pipeline {
             }
         }
 
-        stage('Deploy image to local registry') {
+        stage('Deploy artifact with nexus') {
+            steps {
+                sh 'mvn deploy -DskipTests'
+            }
+        }
+
+        stage('Build Docker image') {
             steps {
                 script {
-                    echo "Deploying the image to local registry..."
-                    sh "docker login -u 191jft4255 -p 191JFT4255 192.168.50.12:8082"
+                    sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
+                }
+            }
+        }
+
+        stage('Deploy image') {
+            steps {
+                echo "Deploying the image..."
+                script {
+                    sh "docker login -u 191jft4255 -p 191JFT4255 docker.io"
                     sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
                 }
             }
         }
 
-        stage('Deploy image to Docker Hub') {
-            steps {
-                script {
-                    echo "Deploying the image to Docker Hub..."
-                    sh 'docker login -u 191jft4255 -p 191JFT4255 docker.io'
-                    sh "docker push docker.io/${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
-                }
-            }
-        }
 
         stage('Run Docker Compose') {
             steps {
