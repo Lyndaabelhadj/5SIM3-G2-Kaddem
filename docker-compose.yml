@@ -4,7 +4,7 @@ services:
   backend_spring:
     image: rayenbenslimen/kaddem:1.0
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/khaddemApp
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3307/khaddemApp
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     ports:
@@ -20,7 +20,7 @@ services:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'khaddemApp'
     ports:
-      - "3306:3306"
+      - "3307:3307"
     volumes:
       - db:/var/lib/mysql
 volumes:
