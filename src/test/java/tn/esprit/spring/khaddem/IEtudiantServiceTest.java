@@ -8,7 +8,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
-import tn.esprit.spring.kaddem.EtudiantServiceImpl;
+import tn.esprit.spring.khaddem.services.EtudiantServiceImpl;
 import tn.esprit.spring.khaddem.entities.Etudiant;
 import tn.esprit.spring.khaddem.repositories.EtudiantRepository;
 

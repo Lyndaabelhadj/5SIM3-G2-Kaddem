@@ -1,4 +1,4 @@
-package tn.esprit.spring.kaddem;
+package tn.esprit.spring.khaddem.services;
 
 import tn.esprit.spring.khaddem.entities.Universite;
 

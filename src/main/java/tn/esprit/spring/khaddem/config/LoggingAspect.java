@@ -22,7 +22,7 @@ public class LoggingAspect {
         log.info("In method : " + name + " : ");
     }
 
-    @AfterReturning("execution( * tn.esprit.spring.kaddem.DepartementServiceImpl.retrieveDepartement(..))")
+    @AfterReturning("execution( * tn.esprit.spring.khaddem.services.DepartementServiceImpl.retrieveDepartement(..))")
     public void logMethodExit1(JoinPoint joinPoint) {
         String name = joinPoint.getSignature().getName();
         log.info("Out of method without errors : " + name );

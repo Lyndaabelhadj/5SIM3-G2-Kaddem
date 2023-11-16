@@ -7,7 +7,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-@ComponentScan(basePackages = "tn.esprit.spring.kaddem")
 public class KhaddemApplication {
 
     public static void main(String[] args) {

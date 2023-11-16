@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.khaddem.entities.Equipe;
-import tn.esprit.spring.kaddem.IEquipeService;
+import tn.esprit.spring.khaddem.services.IEquipeService;
 import java.util.List;
 
 @RestController
