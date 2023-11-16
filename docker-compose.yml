@@ -12,7 +12,7 @@ services:
 
   mysqldb:
     container_name: mysqldb
-    image: arm64v8/mysql:8.0.34
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'khaddemApp'
