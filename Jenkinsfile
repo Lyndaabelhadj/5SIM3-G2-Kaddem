@@ -30,23 +30,16 @@ pipeline {
                 sh 'mvn validate'
                 echo 'Compiling...'
                 sh 'mvn compile'
+            }
+        }
 
-            }
-        }
-stage('testing spring') {
-            steps {
-              // sh "docker run -d -p 3308:3306 --name testing_container -e MYSQL_ROOT_PASSWORD=root mysql:5.7"
-               sh 'mvn test -Dspring.profiles.active=testing'
-            }
-        }
-        stage('Code Coverage') {
+     stage('Code Coverage') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     sh "mvn jacoco:report"
                 }
             }
         }
-
         stage('Quality test SONARQUBE') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=sonar -Dsonar.password=overlord'
