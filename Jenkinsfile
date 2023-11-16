@@ -7,6 +7,8 @@ pipeline {
         CONTAINER_NAME = 'devops-kaddem-project'
         DOCKER_IMAGE_TAG = 'latest'
         PORT = "9095"
+        DOCKER_COMPOSE_PATH = '/usr/libexec/docker/cli-plugins/docker-compose'
+
     }
 
     stages {
@@ -79,7 +81,7 @@ pipeline {
         stage('Run Docker Compose') {
             steps {
                 echo "Running docker compose..."
-                sh 'docker-compose up -d'
+                sh 'sh "${DOCKER_COMPOSE_PATH} up -d"'
             }
         }
     }
