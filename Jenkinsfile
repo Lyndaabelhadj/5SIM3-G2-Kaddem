@@ -30,7 +30,7 @@ pipeline {
        }
                stage('Docker Build image') {
                    steps {
-                       sh 'docker build -t khaddem1.jar .'
+                       sh 'docker build -t khaddem.jar .'
                    }
                }
 
