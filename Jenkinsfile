@@ -68,10 +68,13 @@ pipeline {
         stage('Deploy image') {
             steps {
                 echo "Deploying the image..."
-                sh "docker login -u 191jft4255 -p 191JFT4255 ${DOCKER_REGISTRY}"
-                sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
+                script {
+                    sh "echo 191JFT4255 | docker login -u 191jft4255 --password-stdin 192.168.50.12:8082"
+                    sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
+                }
             }
         }
+
 
         stage('Run Docker Compose') {
             steps {
