@@ -10,10 +10,10 @@ volumes:
 services:
   db:
     container_name: db
-    environment:
-      MYSQL_ROOT_PASSWORD: 'null'
-      MYSQL_ALLOW_EMPTY_PASSWORD: '1'
     image: arm64v8/mysql:8.0.34
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'khaddemApp'
     networks:
       - devops
     ports:
@@ -25,7 +25,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/khaddemApp
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: null
+      SPRING_DATASOURCE_PASSWORD: root
     restart: on-failure
     container_name: backend
     depends_on:
