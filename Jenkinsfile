@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY = 'dali'
+        DOCKER_REGISTRY = '191jft4255'
         DOCKER_IMAGE_NAME = 'kaddem-project-dali'
         CONTAINER_NAME = 'devops-kaddem-project'
         DOCKER_IMAGE_TAG = 'latest'
@@ -57,11 +57,11 @@ pipeline {
             }
         }
 
-        stage('Build Docker image') {
+        stage('Deploy image') {
             steps {
-                script {
-                    sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
-                }
+                 echo "Deploying the image..."
+                   sh 'docker login -u 191jft4255 -p 191JFT4255 docker.io'
+                   sh 'docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
             }
         }
 
